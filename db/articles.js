@@ -2,7 +2,14 @@ const collection = [
   { title: "how to smell like a wet dog",
     body: "to smell like a wet dog you MUST live like a wet dog",
     author: "P. Oodle",
-    urlTitle: "how%20to%20smell%20like%20a%20wet%20dog"}
+    urlTitle: "how%20to%20smell%20like%20a%20wet%20dog"},
+  {
+    title: "burgers",
+    body: "body",
+    author: "author",
+    urlTitle: "urlauthor"
+  }
+
 ];
 
 function all() {
@@ -18,9 +25,16 @@ function add(title, body, author, urlTitle){
   collection.push(newArticle); 
 }; 
 
+function getByTitle(title){
+  let changeValueIndex = collection.findIndex(collection => collection.title === title );
+  // console.log(changeValueIndex);
+  // console.log(collection[changeValueIndex]);
+  return collection[changeValueIndex]
+}
+
 module.exports = {
   all: all,
   add: add,
-  // getByTitle: getByTitle,
+  getByTitle: getByTitle,
   // editByTitle: editByTitle
 };
