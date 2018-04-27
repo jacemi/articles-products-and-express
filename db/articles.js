@@ -30,11 +30,20 @@ function getByTitle(title){
   // console.log(changeValueIndex);
   // console.log(collection[changeValueIndex]);
   return collection[changeValueIndex]
+}; 
+
+function editByTitle(title, newTitle, newBody, newAuthor, newUrlTitle) {
+  let changeValueIndex = collection.findIndex(collection => collection.title === title);
+  collection[changeValueIndex].title = newTitle;
+  collection[changeValueIndex].body = newBody;
+  collection[changeValueIndex].author = newAuthor;
+  collection[changeValueIndex].urlTitle = newUrlTitle;
+  return collection[changeValueIndex]
 }
 
 module.exports = {
   all: all,
   add: add,
   getByTitle: getByTitle,
-  // editByTitle: editByTitle
+  editByTitle: editByTitle
 };
