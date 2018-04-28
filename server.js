@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true}))
+
 app.use(methodOverride('_method'));
 
 const hbs = handlebars.create({
@@ -23,7 +24,7 @@ app.set('view engine', 'hbs');
 app.use('/', routes);
 
 app.get('/', (req, res) => {
-  res.send('index.html content');
+  res.send('index.html');
 });
 
 app.listen(PORT, (err) => {

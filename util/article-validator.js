@@ -19,13 +19,6 @@ let articleValidator = function (req, res, next) {
         next()
       }
       break;
-    case "PUT":
-
-      break;
-    case "DELETE":
-
-      break;
-
     default:
       next()
       break;
