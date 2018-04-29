@@ -12,7 +12,7 @@ let currentArticle = {};
 router.route('/')
   .get((req, res) => {
     // console.log(req);
-    console.log({ articles: articlesDb.all() });
+    // console.log({ articles: articlesDb.all() });
     res.render('articles-list', { articles: articlesDb.all() });
   })
   .post((req, res) => {
@@ -35,9 +35,9 @@ router.route('/')
     } else if (!req.body.body && !req.body.author) {
       console.log("no body and author")
       currentArticle.postError = true;
+      currentArticle.title = req.body.title;
       currentArticle.bodyCheck = true;
       currentArticle.authorCheck = true;
-      currentArticle.title = req.body.title;
       res.status(400).render('article-new', currentArticle);
       currentArticle = {};
     } else if (!req.body.title && !req.body.author) {
@@ -59,17 +59,17 @@ router.route('/')
     } else if (!req.body.body) {
       console.log('no body');
       currentArticle.postError = true;
+      currentArticle.title = req.body.title;
       currentArticle.bodyCheck = true;
       currentArticle.author = req.body.author;
-      currentArticle.title = req.body.title;
       res.status(400).render('article-new', currentArticle);
       currentArticle = {};
     } else if (!req.body.author) {
       console.log('no author');
       currentArticle.postError = true;
-      currentArticle.authorCheck = true;
-      currentArticle.body = req.body.body;
       currentArticle.title = req.body.title;
+      currentArticle.body = req.body.body;
+      currentArticle.authorCheck = true;
       res.status(400).render('article-new', currentArticle);
       currentArticle = {};
     } else if (articlesDb.getByTitle(req.body.title)) {
@@ -120,6 +120,8 @@ router.route('/:title')
     }
   })
   .put((req, res) => {
+    let decodedURL = decodeURI(req.url);
+    let title = (decodedURL.split('/')[1]).split('?')[0];
     if (!req.body.title && !req.body.body && !req.body.author) {
       console.log("no title, body, author");
       currentArticle.postError = true;
@@ -176,19 +178,30 @@ router.route('/:title')
       currentArticle.title = req.body.title;
       res.status(400).render('edit-article-by-title', currentArticle);
       currentArticle = {};
-    // } else if (articlesDb.getByTitle(req.body.title)) {
-    //   console.log('it exists');
+    } else if (articlesDb.getByTitle(req.body.title).title !== title) {
+      console.log('it exists');
+      console.log("body", req.body.title, "url", req.url)
+      currentArticle.postError = true;
+      currentArticle.title = req.body.title;
+      currentArticle.body = req.body.body;
+      currentArticle.author = req.body.author;
+      currentArticle.existenceCheck = true;
+      res.status(400).render('edit-article-by-title', currentArticle);
+      currentArticle = {};
+      // currentArticle.existenceCheck = true;
+    // } else if(currentArticle.existenceCheck){
+    //   console.log("restrict", existenceCheck);
     //   currentArticle.postError = true;
     //   currentArticle.title = req.body.title;
     //   currentArticle.body = req.body.body;
     //   currentArticle.author = req.body.author;
-    //   currentArticle.existenceCheck = true;
+    //   console.log('currentArticle pre', currentArticle); 
     //   res.status(400).render('edit-article-by-title', currentArticle);
-    //   console.log(currentArticle);
-    //   currentArticle = {};
+    //   currentArticle ={};
     } else {
-      let decodedURL = decodeURI(req.url);
-      let title = (decodedURL.split('/')[1]).split('?')[0];
+      // let decodedURL = decodeURI(req.url);
+      // let title = (decodedURL.split('/')[1]).split('?')[0];
+      console.log('are we here?');
       let newTitle = req.body.title;
       let newBody = req.body.body;
       let newAuthor = req.body.author;

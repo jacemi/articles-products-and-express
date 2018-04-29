@@ -1,0 +1,30 @@
+<form action="/products/{{id}}?_method=PUT" method="POST">
+
+
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" value="{{name}}"> {{#if nameCheck}}
+  <p>{{>no-name}}</p>
+  {{/if}}
+
+
+  <label for="price">Price:</label>
+  <input type="text" name="price" id="price" value="{{price}}"> {{#if priceCheck}}
+  <p>{{>no-price}}</p>
+  {{/if}}
+
+  <label for="inventory">Inventory:</label>
+  <input type="text" name="inventory" id="inventory" value="{{inventory}}"> {{#if inventoryCheck}}
+  <p>{{>no-inventory}}</p>
+
+  {{/if}} {{#if existenceCheck}}
+  <p>{{>already-exists}}</p>
+  {{/if}}
+
+  <button type="submit">Submit Changes </button>
+</form>
+
+<form action="/products/{{id}}?_method=DELETE" method="POST">
+  <button type="submit">Delete Product</button>
+</form>
+<a href="/products/{{id}}">Back to Product Page</a>
+<a href="/products">Back to Products Listing</a>

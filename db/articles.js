@@ -8,7 +8,15 @@ const collection = [
     body: "body",
     author: "author",
     urlTitle: "urlauthor"
+  },
+  {
+    title: "photo",
+    body: "body",
+    author: "author",
+    urlTitle: "urlauthor"
+
   }
+
 
 ];
 
