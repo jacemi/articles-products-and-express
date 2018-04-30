@@ -10,11 +10,16 @@
   <label for="price">Price:</label>
   <input type="text" name="price" id="price" value="{{price}}"> {{#if priceCheck}}
   <p>{{>no-price}}</p>
+  {{/if}}{{#if priceIsNaN}}
+  <p>{{>no-price}}</p>
   {{/if}}
 
   <label for="inventory">Inventory:</label>
   <input type="text" name="inventory" id="inventory" value="{{inventory}}"> {{#if inventoryCheck}}
+  <p>{{>no-inventory}}</p>{{#if inventoryIsNaN}}
   <p>{{>no-inventory}}</p>
+  
+  {{/if}}
 
   {{/if}} {{#if existenceCheck}}
   <p>{{>already-exists}}</p>
