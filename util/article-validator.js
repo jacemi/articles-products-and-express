@@ -8,43 +8,34 @@ let articleValidator = function (req, res, next) {
     case "POST":
       for (key in reqBody) {
         if (reqBody[key] == "") {
-          console.log('checking for empty strings');
           currentArticle[`${key}Check`] = true;
-          console.log(currentArticle);
         } else {
-          console.log('assigning available keys');
           currentArticle[key] = reqBody[key];
         }
       }
       currentArticleKeys = Object.keys(currentArticle);
       if (errorFlagsPresent(currentArticleKeys)) {
-        console.log('route to send error');
         currentArticle.postError = true;
         res.status(400).render('article-new', currentArticle);
         currentArticle = {};
       } else {
-        console.log('route to successful post')
         next()
       }
       break;
     case "PUT":
       for (key in reqBody) {
         if (reqBody[key] == "") {
-          console.log('checking for empty strings');
           currentArticle[`${key}Check`] = true;
         } else {
-          console.log('assigning available keys');
           currentArticle[key] = reqBody[key];
         }
       }
       currentArticleKeys = Object.keys(currentArticle);
       if (errorFlagsPresent(currentArticleKeys)) {
-        console.log('route to send error');
         currentArticle.postError = true;
         res.status(400).render('edit-article-by-title', currentArticle);
         currentArticle = {};
       } else {
-        console.log('route to successful post')
         next()
       }
       break;
