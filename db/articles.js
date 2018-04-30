@@ -20,27 +20,26 @@ function all() {
   return collection;
 }
 
-function add(title, body, author, urlTitle){
+function add(title, body, author, urlTitle) {
   let newArticle = {};
   newArticle.title = title;
   newArticle.body = body;
   newArticle.author = author;
   newArticle.urlTitle = urlTitle;
-  collection.push(newArticle); 
-}; 
+  collection.push(newArticle);
+};
 
-function getByTitle(title){
-  let changeValueIndex = collection.findIndex(collection => collection.title === title );
+function getByTitle(title) {
+  let changeValueIndex = collection.findIndex(collection => collection.title === title);
   return collection[changeValueIndex]
-}; 
+};
 
-function getByUrlTitle(urlTitle){
+function getByUrlTitle(urlTitle) {
   let changeValueIndex = collection.findIndex(collection => collection.urlTitle === urlTitle);
   return collection[changeValueIndex]
 }
 
 function editByTitle(title, newTitle, newBody, newAuthor, newUrlTitle) {
-  console.log("here", title, newTitle, newBody, newAuthor, newUrlTitle);
   let changeValueIndex = collection.findIndex(collection => collection.title === title);
   collection[changeValueIndex].title = newTitle;
   collection[changeValueIndex].body = newBody;
@@ -49,11 +48,11 @@ function editByTitle(title, newTitle, newBody, newAuthor, newUrlTitle) {
   return collection[changeValueIndex]
 }
 
-function deleteByTitle(title){
+function deleteByTitle(title) {
   let changeValueIndex = collection.findIndex(collection => collection.title === title);
   console.log("delete-index: ", changeValueIndex);
-  console.log("pre-slice: ",collection);
-  let test = collection.splice(changeValueIndex, 1); 
+  console.log("pre-slice: ", collection);
+  let test = collection.splice(changeValueIndex, 1);
   console.log("post-slice: ", collection);
 };
 

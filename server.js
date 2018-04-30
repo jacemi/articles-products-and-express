@@ -1,4 +1,4 @@
-const express = require('express'); 
+const express = require('express');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const routes = require('./routes');
@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(methodOverride('_method'));
 

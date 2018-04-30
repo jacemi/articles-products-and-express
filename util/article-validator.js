@@ -3,7 +3,7 @@ let articleValidator = function (req, res, next) {
   const reqBody = req.body;
   let currentArticle = {};
   let currentArticleKeys = null;
-  
+
   switch (req.method) {
     case "POST":
       for (key in reqBody) {

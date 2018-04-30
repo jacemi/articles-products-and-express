@@ -3,7 +3,7 @@ const collection = [
     id: 0,
     name: "apple",
     price: 1.25,
-    inventory: 30 
+    inventory: 30
   },
   {
     id: 1,
@@ -26,13 +26,13 @@ function all() {
 }
 
 function add(name, price, inventory) {
- let newProduct = {};
- newProduct.id = universalIdNumber;
- newProduct.name = name;
- newProduct.price = price;
- newProduct.inventory = inventory;
- collection.push(newProduct);
- universalIdNumber++;
+  let newProduct = {};
+  newProduct.id = universalIdNumber;
+  newProduct.name = name;
+  newProduct.price = price;
+  newProduct.inventory = inventory;
+  collection.push(newProduct);
+  universalIdNumber++;
 };
 
 function getById(id) {
@@ -52,7 +52,7 @@ function editById(id, newName, newPrice, newInventory) {
 
 function deleteById(id) {
   let changeValueIndex = collection.findIndex(collection => collection.id === id);
-  let test = collection.splice(changeValueIndex, 1); 
+  let test = collection.splice(changeValueIndex, 1);
 }
 
 module.exports = {

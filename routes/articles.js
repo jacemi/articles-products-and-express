@@ -11,11 +11,11 @@ let currentArticle = {};
 
 router.route('/')
   .get((req, res) => {
- 
+
     res.render('articles-list', { articles: articlesDb.all() });
   })
   .post((req, res) => {
-   
+
     let title = req.body.title;
     let body = req.body.body;
     let author = req.body.author;
@@ -67,24 +67,22 @@ router.route('/:title')
       //   res.status(400).render('edit-article-by-title', currentArticle);
       //   currentArticle ={};
     } else {
-      console.log('are we here?');
-      console.log(title);
       let newTitle = req.body.title;
       let newBody = req.body.body;
       let newAuthor = req.body.author;
       let newUrlTitle = encodeURI(title);
-      articlesDb.getByTitle(title));
-      articlesDb.editByTitle(title, newTitle, newBody, newAuthor, newUrlTitle); 
+      articlesDb.getByTitle(title);
+      articlesDb.editByTitle(title, newTitle, newBody, newAuthor, newUrlTitle);
       res.render('article-by-title', articlesDb.getByTitle(title));
     }
   })
-  .delete ((req, res) => {
-  let decodedURL = decodeURI(req.url);
-  let title = (decodedURL.split('/')[1]).split('?')[0];
-  console.log('delete', title);
-  articlesDb.deleteByTitle(title);
-  res.render('articles-list', { articles: articlesDb.all() });
-});
+  .delete((req, res) => {
+    let decodedURL = decodeURI(req.url);
+    let title = (decodedURL.split('/')[1]).split('?')[0];
+    console.log('delete', title);
+    articlesDb.deleteByTitle(title);
+    res.render('articles-list', { articles: articlesDb.all() });
+  });
 
 
 router.get('/:title/edit', (req, res) => {
