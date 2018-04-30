@@ -4,45 +4,32 @@ const articleValidator = require('../util/article-validator');
 
 const router = express.Router();
 
-
 router.use(articleValidator.articleValidator);
 
 let currentArticle = {};
 
 router.route('/')
   .get((req, res) => {
-
     res.render('articles-list', { articles: articlesDb.all() });
   })
   .post((req, res) => {
-
     let title = req.body.title;
     let body = req.body.body;
     let author = req.body.author;
     let urlTitle = encodeURI(title);
     articlesDb.add(title, body, author, urlTitle);
     res.render('articles-list', { articles: articlesDb.all() });
-    // }
   });
-
-
 
 router.get('/new', (req, res) => {
   res.render('article-new');
 });
 
-
 router.route('/:title')
   .get((req, res) => {
-
     let decodedURL = decodeURI(req.url)
-
     let title = decodedURL.substring(1, req.url.length);
-
-    console.log(articlesDb.getByTitle(title));
-
     res.render('article-by-title', articlesDb.getByTitle(title));
-    // }
   })
   .put((req, res) => {
     let decodedURL = decodeURI(req.url);
@@ -79,20 +66,15 @@ router.route('/:title')
   .delete((req, res) => {
     let decodedURL = decodeURI(req.url);
     let title = (decodedURL.split('/')[1]).split('?')[0];
-    console.log('delete', title);
     articlesDb.deleteByTitle(title);
     res.render('articles-list', { articles: articlesDb.all() });
   });
 
 
 router.get('/:title/edit', (req, res) => {
-  console.log("edit");
   let decodedURL = decodeURI(req.url);
   let title = decodedURL.split('/')[1];
-  console.log(title);
   res.render('edit-article-by-title', articlesDb.getByTitle(title));
 })
-
-
 
 module.exports = router;

@@ -50,14 +50,13 @@ router.route('/')
       let inventory = req.body.inventory;
       productsDb.add(name, price, inventory);
       res.render('products-list', { products: productsDb.all() });
-    }
-
-  })
+    };
+  });
 
 
 router.get('/new', (req, res) => {
   res.render('product-new');
-})
+});
 
 router.route('/:id')
   .get((req, res) => {

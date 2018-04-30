@@ -51,15 +51,8 @@ let articleValidator = function (req, res, next) {
     default:
       next()
       break;
-  }
+  };
 };
-
-
-
-module.exports = {
-  articleValidator: articleValidator,
-};
-
 
 function errorFlagsPresent(params) {
   for (i = 0; i < params.length; i++) {
@@ -69,3 +62,8 @@ function errorFlagsPresent(params) {
   }
   return false;
 };
+
+module.exports = {
+  articleValidator: articleValidator,
+};
+

@@ -55,13 +55,6 @@ let productValidator = function (req, res, next) {
   }
 };
 
-
-
-module.exports = {
-  productValidator: productValidator,
-};
-
-
 function errorFlagsPresent(params) {
   for (i = 0; i < params.length; i++) {
     if (params[i] == 'nameCheck' || params[i] == 'priceCheck' || params[i] == 'inventoryCheck') {
@@ -70,3 +63,9 @@ function errorFlagsPresent(params) {
   }
   return false;
 };
+
+module.exports = {
+  productValidator: productValidator,
+};
+
+
