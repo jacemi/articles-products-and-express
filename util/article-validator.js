@@ -1,5 +1,6 @@
 
 let articleValidator = function (req, res, next) {
+  
   const reqBody = req.body;
   let currentArticle = {};
   let currentArticleKeys = null;

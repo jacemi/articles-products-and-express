@@ -1,8 +1,10 @@
 
 let productValidator = function (req, res, next) {
+  
   const reqBody = req.body;
   let currentProduct = {};
   let currentProductKeys = null;
+
   switch (req.method) {
     case "POST":
       for (key in reqBody) {
