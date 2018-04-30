@@ -112,13 +112,13 @@ router.route('/:title')
     let title = decodedURL.substring(1, req.url.length);
     // console.log(title);
     console.log(articlesDb.getByTitle(title));
-    if (title.search(' ') >= 1) {
-      // console.log("get if");
-      res.render('article-by-title', articlesDb.getByTitle(title))
-    } else {
+    // if (title.search(' ') >= 1) {
+    //   // console.log("get if");
+    //   res.render('article-by-title', articlesDb.getByTitle(title))
+    // } else {
       // console.log("get else");
       res.render('article-by-title', articlesDb.getByTitle(title));
-    }
+    // }
   })
   .put((req, res) => {
     
