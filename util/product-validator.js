@@ -5,23 +5,16 @@ let productValidator = function (req, res, next) {
   let currentProductKeys = null;
   switch (req.method) {
     case "POST":
-      console.log(req.body);
       for (key in reqBody) {
         if (reqBody[key] == "") {
           console.log('checking for empty strings');
-          console.log(reqBody[key])
           currentProduct[`${key}Check`] = true;
-          console.log(currentProduct);
         } else {
           console.log('assigning available keys');
           currentProduct[key] = reqBody[key];
-          console.log(reqBody[key]);
-          console.log(currentProduct);
         }
       }
       currentProductKeys = Object.keys(currentProduct);
-      console.log("currentProductKeys", currentProductKeys);
-      console.log(errorFlagsPresent(currentProductKeys));
       if (errorFlagsPresent(currentProductKeys)) {
         console.log('route to send error');
         currentProduct.postError = true;
@@ -33,23 +26,18 @@ let productValidator = function (req, res, next) {
       }
       break;
     case "PUT":
-      console.log(req.body);
       for (key in reqBody) {
         if (reqBody[key] == "") {
           console.log('checking for empty strings');
-          console.log(reqBody[key])
           currentProduct[`${key}Check`] = true;
-          console.log(currentProduct);
         } else {
           console.log('assigning available keys');
           currentProduct[key] = reqBody[key];
-          console.log("reqBody[key]", reqBody[key]);
           console.log("else in 1st validation", currentProduct);
         }
       }
       currentProductKeys = Object.keys(currentProduct);
       console.log("currentProductKeys", currentProductKeys);
-      console.log(errorFlagsPresent(currentProductKeys));
       if (errorFlagsPresent(currentProductKeys)) {
         console.log('route to send error');
         currentProduct.postError = true;
@@ -76,7 +64,6 @@ module.exports = {
 
 function errorFlagsPresent(params) {
   for (i = 0; i < params.length; i++) {
-    console.log(params[i]);
     if (params[i] == 'nameCheck' || params[i] == 'priceCheck' || params[i] == 'inventoryCheck') {
       return true;
     }

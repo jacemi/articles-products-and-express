@@ -41,7 +41,6 @@ function getById(id) {
 };
 
 function editById(id, newName, newPrice, newInventory) {
-  console.log('did you get this far?'); 
   let changeValueIndex = collection.findIndex(collection => collection.id === id);
   console.log(changeValueIndex);
 
