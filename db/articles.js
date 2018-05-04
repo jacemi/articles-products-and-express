@@ -10,15 +10,12 @@ const collection = [
     body: "body",
     author: "author",
     urlTitle: "urlauthor"
-
   }
-
-
 ];
 
 function all() {
   return collection;
-}
+};
 
 function add(title, body, author, urlTitle) {
   let newArticle = {};
@@ -46,7 +43,7 @@ function editByTitle(title, newTitle, newBody, newAuthor, newUrlTitle) {
   collection[changeValueIndex].author = newAuthor;
   collection[changeValueIndex].urlTitle = newUrlTitle;
   return collection[changeValueIndex]
-}
+};
 
 function deleteByTitle(title) {
   let changeValueIndex = collection.findIndex(collection => collection.title === title);

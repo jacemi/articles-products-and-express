@@ -1,4 +1,3 @@
-
 let articleValidator = function (req, res, next) {
   
   const reqBody = req.body;
@@ -8,7 +7,7 @@ let articleValidator = function (req, res, next) {
   switch (req.method) {
     case "POST":
       for (key in reqBody) {
-        if (reqBody[key] == "") {
+        if (reqBody[key] === "") {
           currentArticle[`${key}Check`] = true;
         } else {
           currentArticle[key] = reqBody[key];

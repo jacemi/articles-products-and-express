@@ -65,7 +65,7 @@ router.route('/:id')
   })
   .put((req, res) => {
     let currentProduct = {};
-    currentProduct.id =
+    // currentProduct.id =
       let parsedPrice = Number(req.body.price);
     let parsedInventory = Number(req.body.inventory);
     if ((isNaN(parsedPrice)) && (isNaN(parsedInventory))) {

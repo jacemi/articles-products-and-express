@@ -10,7 +10,8 @@ let currentArticle = {};
 
 router.route('/')
   .get((req, res) => {
-    res.render('articles-list', { articles: articlesDb.all() });
+    let articles = articlesDb.all();
+    res.render('articles-list', { articles: articles });
   })
   .post((req, res) => {
     let title = req.body.title;
@@ -27,6 +28,7 @@ router.get('/new', (req, res) => {
 
 router.route('/:title')
   .get((req, res) => {
+    //use req.params.title
     let decodedURL = decodeURI(req.url)
     let title = decodedURL.substring(1, req.url.length);
     res.render('article-by-title', articlesDb.getByTitle(title));
